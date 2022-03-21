@@ -1,15 +1,8 @@
-//
-//  NSButton.swift
-//  WebWrapper3
-//
-//  Created by user on 17.02.2022.
-//
-
 import Cocoa
 
 extension NSButton {
     
-    func configurate(title: String = "Botton", color: NSColor = .init(red: 255/255, green: 51/255, blue: 153/255, alpha: 1), radius: CGFloat = 10, action: Selector?) {
+    func configure(title: String = "Botton", color: NSColor = .init(red: 255/255, green: 51/255, blue: 153/255, alpha: 1), radius: CGFloat = 10, action: Selector?) {
         self.title = title
         self.action = action
         self.bezelStyle = .texturedSquare

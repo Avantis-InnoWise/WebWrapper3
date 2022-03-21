@@ -1,10 +1,3 @@
-//
-//  main.swift
-//  WebWrapper3
-//
-//  Created by user on 17.02.2022.
-//
-
 import Cocoa
 
 let delegate = AppDelegate()
