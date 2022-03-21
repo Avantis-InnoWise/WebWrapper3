@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  WebWrapper3
-//
-//  Created by user on 16.02.2022.
-//
-
 import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -18,7 +11,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                defer: false)
         guard let window = window else { return }
         window.title = Localized.appTitle
-        window.contentViewController = MainViewController()
+        window.contentViewController = MainVC()
         window.makeKeyAndOrderFront(nil)
     }
 

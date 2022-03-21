@@ -1,10 +1,3 @@
-//
-//  Bundle.swift
-//  WebWrapper3
-//
-//  Created by user on 17.02.2022.
-//
-
 import Cocoa
 
 extension Bundle {
