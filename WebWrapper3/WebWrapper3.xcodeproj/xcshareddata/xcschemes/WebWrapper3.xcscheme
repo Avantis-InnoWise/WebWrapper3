@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CEA49A5227BD46F300FB1F02"
                BuildableName = "WebWrapper1.app"
-               BlueprintName = "WebWrapper1"
-               ReferencedContainer = "container:WebWrapper1.xcodeproj">
+               BlueprintName = "WebWrapper3"
+               ReferencedContainer = "container:WebWrapper3.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,8 +46,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CEA49A5227BD46F300FB1F02"
             BuildableName = "WebWrapper1.app"
-            BlueprintName = "WebWrapper1"
-            ReferencedContainer = "container:WebWrapper1.xcodeproj">
+            BlueprintName = "WebWrapper3"
+            ReferencedContainer = "container:WebWrapper3.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -70,8 +70,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CEA49A5227BD46F300FB1F02"
             BuildableName = "WebWrapper1.app"
-            BlueprintName = "WebWrapper1"
-            ReferencedContainer = "container:WebWrapper1.xcodeproj">
+            BlueprintName = "WebWrapper3"
+            ReferencedContainer = "container:WebWrapper3.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
