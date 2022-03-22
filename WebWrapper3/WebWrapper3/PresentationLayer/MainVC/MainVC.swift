@@ -32,16 +32,16 @@ final class MainVC: NSViewController {
         self.setupLayout()
     }
     
-    @objc private func backButtonAction() {
+    @objc private func returnButtonAction() {
         if returnButton.isEnabled { webView.goBack() }
     }
-
-    @objc private func forwardButtonAction() {
-        if nextButton.isEnabled { webView.goForward() }
+    
+    @objc private func mainPageButtonAction() {
+        if let url = baseUrl { self.webView.load(URLRequest(url: url)) }
     }
 
-    @objc private func homeButtonAction() {
-        if let url = baseUrl { self.webView.load(URLRequest(url: url)) }
+    @objc private func nextButtonAction() {
+        if nextButton.isEnabled { webView.goForward() }
     }
 }
 
@@ -50,7 +50,7 @@ private extension MainVC {
     
     func setupButtonBack() -> NSButton {
         let button = NSButton()
-        button.configure(title: Localized.buttonBackTitle, action: #selector(backButtonAction))
+        button.configure(title: Localized.buttonBackTitle, action: #selector(returnButtonAction))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isEnabled = false
         button.layer?.backgroundColor = NSColor.lightGray.cgColor
@@ -59,7 +59,7 @@ private extension MainVC {
     
     func setupButtonHome() -> NSButton {
         let button = NSButton()
-        button.configure(title: Localized.buttonHomeTitle, action: #selector(homeButtonAction))
+        button.configure(title: Localized.buttonHomeTitle, action: #selector(mainPageButtonAction))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer?.backgroundColor = NSColor.lightGray.cgColor
         return button
@@ -67,7 +67,7 @@ private extension MainVC {
     
     func setupButtonForward() -> NSButton {
         let button = NSButton()
-        button.configure(title: Localized.buttonForwardTitle, action: #selector(forwardButtonAction))
+        button.configure(title: Localized.buttonForwardTitle, action: #selector(nextButtonAction))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isEnabled = false
         button.layer?.backgroundColor = NSColor.lightGray.cgColor
@@ -127,7 +127,6 @@ private extension MainVC {
 
 //MARK: WKNavigationDelegate
 extension MainVC: WKNavigationDelegate {
-
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         returnButton.isEnabled = webView.backForwardList.backList.isEmpty ? false : true
         nextButton.isEnabled = webView.backForwardList.forwardList.isEmpty ? false : true
@@ -136,7 +135,6 @@ extension MainVC: WKNavigationDelegate {
 
 //MARK: WKUIDelegate
 extension MainVC: WKUIDelegate {
-    
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if navigationAction.targetFrame == nil || navigationAction.targetFrame?.isMainFrame == false {
             if let newURL = navigationAction.request.url {
