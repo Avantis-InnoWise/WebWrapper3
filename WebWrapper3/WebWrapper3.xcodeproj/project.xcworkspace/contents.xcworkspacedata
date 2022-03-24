@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/aleksandrusnarskij/Xcode-projects/WebWrapper3/WebWrapper3/WebWrapper3.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
