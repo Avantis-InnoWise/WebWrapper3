@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		8C1AFEC527E8B422005037D9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C1AFEC427E8B422005037D9 /* Info.plist */; };
 		8C1AFEC727EA00BF005037D9 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1AFEC627EA00BF005037D9 /* AppConstant.swift */; };
+		8C1AFEC927EB120A005037D9 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1AFEC827EB120A005037D9 /* MainPresenter.swift */; };
+		8C1AFECB27EB12FC005037D9 /* MainComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1AFECA27EB12FC005037D9 /* MainComposer.swift */; };
 		8C3A484E27E8ABCA00373F4F /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C3A484927E8ABCA00373F4F /* Main.xib */; };
 		8C3A484F27E8ABCA00373F4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3A484A27E8ABCA00373F4F /* AppDelegate.swift */; };
 		8C3A485027E8ABCA00373F4F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3A484B27E8ABCA00373F4F /* main.swift */; };
 		CEA49A5B27BD46F500FB1F02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA49A5A27BD46F500FB1F02 /* Assets.xcassets */; };
 		CEA49A7027BE3B2000FB1F02 /* NSButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA49A6F27BE3B2000FB1F02 /* NSButton+Extension.swift */; };
 		CEA49A7427BE3B4A00FB1F02 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA49A7327BE3B4A00FB1F02 /* String+Extension.swift */; };
-		CEA49A7727BE3B7200FB1F02 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA49A7627BE3B7200FB1F02 /* Localized.swift */; };
+		CEA49A7727BE3B7200FB1F02 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA49A7627BE3B7200FB1F02 /* Localization.swift */; };
 		CEA49A7927BE3B7E00FB1F02 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEA49A7827BE3B7E00FB1F02 /* Localizable.strings */; };
 		CEA49AA227BE56C000FB1F02 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA49AA127BE56C000FB1F02 /* MainVC.swift */; };
 		CEA49AA427BE6E5400FB1F02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEA49AA327BE6E5400FB1F02 /* InfoPlist.strings */; };
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		8C1AFEC427E8B422005037D9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C1AFEC627EA00BF005037D9 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
+		8C1AFEC827EB120A005037D9 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		8C1AFECA27EB12FC005037D9 /* MainComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainComposer.swift; sourceTree = "<group>"; };
 		8C3A484927E8ABCA00373F4F /* Main.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Main.xib; sourceTree = "<group>"; };
 		8C3A484A27E8ABCA00373F4F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C3A484B27E8ABCA00373F4F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -33,7 +37,7 @@
 		CEA49A5A27BD46F500FB1F02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEA49A6F27BE3B2000FB1F02 /* NSButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Extension.swift"; sourceTree = "<group>"; };
 		CEA49A7327BE3B4A00FB1F02 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		CEA49A7627BE3B7200FB1F02 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		CEA49A7627BE3B7200FB1F02 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		CEA49A7827BE3B7E00FB1F02 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CEA49AA127BE56C000FB1F02 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		CEA49AA327BE6E5400FB1F02 /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -128,7 +132,7 @@
 		CEA49A6727BD472F00FB1F02 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				CEA49A7627BE3B7200FB1F02 /* Localized.swift */,
+				CEA49A7627BE3B7200FB1F02 /* Localization.swift */,
 				CEA49A7827BE3B7E00FB1F02 /* Localizable.strings */,
 			);
 			path = Localization;
@@ -148,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				CEA49AA127BE56C000FB1F02 /* MainVC.swift */,
+				8C1AFEC827EB120A005037D9 /* MainPresenter.swift */,
+				8C1AFECA27EB12FC005037D9 /* MainComposer.swift */,
 			);
 			path = MainVC;
 			sourceTree = "<group>";
@@ -229,10 +235,12 @@
 				CEA49A7427BE3B4A00FB1F02 /* String+Extension.swift in Sources */,
 				CEA49AA627BE716200FB1F02 /* Bundle+Extension.swift in Sources */,
 				8C3A484F27E8ABCA00373F4F /* AppDelegate.swift in Sources */,
+				8C1AFEC927EB120A005037D9 /* MainPresenter.swift in Sources */,
 				CEA49A7027BE3B2000FB1F02 /* NSButton+Extension.swift in Sources */,
+				8C1AFECB27EB12FC005037D9 /* MainComposer.swift in Sources */,
 				8C3A485027E8ABCA00373F4F /* main.swift in Sources */,
 				CEA49AA227BE56C000FB1F02 /* MainVC.swift in Sources */,
-				CEA49A7727BE3B7200FB1F02 /* Localized.swift in Sources */,
+				CEA49A7727BE3B7200FB1F02 /* Localization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

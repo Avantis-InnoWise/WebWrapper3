@@ -23,6 +23,8 @@ final class MainVC: NSViewController {
         static let viewHeigh = 644
     }
     
+    private let output: MainViewOutput
+    
     // MARK: Subviews
     
     private lazy var boxView: NSBox = {
@@ -38,7 +40,7 @@ final class MainVC: NSViewController {
     
     private lazy var returnButton: NSButton = {
         let button = NSButton()
-        button.configure(title: Localized.buttonBackTitle, action: #selector(returnButtonAction))
+        button.setup(with: Localization.buttonBackTitle, action: #selector(returnButtonAction))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isEnabled = false
         button.layer?.backgroundColor = Constant.returnButtonbackgroundColor
@@ -47,7 +49,7 @@ final class MainVC: NSViewController {
     
     private lazy var mainPageButton: NSButton = {
         let button = NSButton()
-        button.configure(title: Localized.buttonHomeTitle, action: #selector(mainPageButtonAction))
+        button.setup(with: Localization.buttonHomeTitle, action: #selector(mainPageButtonAction))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer?.backgroundColor = Constant.mainPageButtonBackgroundColor
         return button
@@ -55,7 +57,7 @@ final class MainVC: NSViewController {
     
     private lazy var nextButton: NSButton = {
         let button = NSButton()
-        button.configure(title: Localized.buttonForwardTitle, action: #selector(nextButtonAction))
+        button.setup(with: Localization.buttonForwardTitle, action: #selector(nextButtonAction))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isEnabled = false
         button.layer?.backgroundColor = Constant.nextButtonBackgroundColor
@@ -77,16 +79,30 @@ final class MainVC: NSViewController {
         webView.navigationDelegate = self
         webView.uiDelegate = self
         DispatchQueue.main.asyncAfter(deadline: .now()) { [ weak self] in
-            if let url = AppConstant.ApiConstant.baseUrl {
-                self?.webView.load(URLRequest(url: url))
-            }
+            self?.output.loadWebPage()
         }
     }
     
+    init(with output: MainViewOutput) {
+        self.output = output
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
-        view = NSView(frame: NSRect(origin: CGPoint(),
-                                    size: CGSize(width: Constant.viewWidth,
-                                                 height: Constant.viewHeigh)))
+        view = NSView(
+            frame: NSRect(
+                origin: CGPoint(),
+                size: CGSize(
+                    width: Constant.viewWidth,
+                    height: Constant.viewHeigh
+                )
+            )
+        )
         view.layer?.backgroundColor = .white
     }
     
@@ -101,9 +117,7 @@ final class MainVC: NSViewController {
     }
     
     @objc private func mainPageButtonAction() {
-        guard let url = AppConstant.ApiConstant.baseUrl
-        else { return }
-        webView.load(URLRequest(url: url))
+        output.loadWebPage()
     }
     
     @objc private func nextButtonAction() {
@@ -175,5 +189,12 @@ extension MainVC: WKUIDelegate {
             }
         }
         return nil
+    }
+}
+
+// MARK: MainViewInput
+extension MainVC: MainViewInput {
+    func makeRequest(_ request: URLRequest) {
+        webView.load(request)
     }
 }
