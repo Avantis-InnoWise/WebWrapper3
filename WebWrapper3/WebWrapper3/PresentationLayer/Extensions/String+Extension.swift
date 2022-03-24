@@ -1,7 +1,7 @@
 import Cocoa
 
 extension String {
-    var localized: String {
+    var localizedValue: String {
         NSLocalizedString(self, comment: "")
     }
 }
