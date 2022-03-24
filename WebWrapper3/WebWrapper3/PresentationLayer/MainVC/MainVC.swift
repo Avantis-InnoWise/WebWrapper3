@@ -2,130 +2,163 @@ import Cocoa
 import WebKit
 
 final class MainVC: NSViewController {
+    // MARK: Constants
     
-    lazy private var returnButton = setupButtonBack()
-    lazy private var mainPageButton = setupButtonHome()
-    lazy private var nextButton = setupButtonForward()
-    
-    lazy private var boxView: NSBox = setupBoxView()
-    lazy private var webView: WKWebView = setupWebView()
-    
-    override func loadView() {
-        self.view = NSView(frame: NSRect(origin: CGPoint(), size: CGSize(width: 836, height: 644)))
+    private enum Constant {
+        static let boxViewBorderWidth: CGFloat = 1
+        static let boxViewBorderColor = NSColor.secondaryLabelColor
+        static let boxViewHeigh: CGFloat = 70
+        static let returnButtonbackgroundColor = NSColor.lightGray.cgColor
+        static let returnButtonWidth: CGFloat = 80
+        static let returnButtonHeigh: CGFloat = 30
+        static let returnButtonLeftConstant:CGFloat = 30
+        static let mainPageButtonBackgroundColor = NSColor.lightGray.cgColor
+        static let mainPageButtonHeigh: CGFloat = 30
+        static let mainPageButtonWidth: CGFloat = 120
+        static let nextButtonBackgroundColor = NSColor.lightGray.cgColor
+        static let nextButtonWidth: CGFloat = 80
+        static let nextButtonHeigh: CGFloat = 30
+        static let nextButtonRightConstant: CGFloat = -30
+        static let viewWidth = 836
+        static let viewHeigh = 644
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.setupView()
-        self.webView.navigationDelegate = self
-        self.webView.uiDelegate = self
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            if let url = baseUrl {
-                self.webView.load(URLRequest(url: url))
-            }
-        }
-    }
+    // MARK: Subviews
     
-    private func setupView() {
-        self.view.layer?.backgroundColor = .white
-        self.addSubviews()
-        self.setupLayout()
-    }
+    private lazy var boxView: NSBox = {
+        let box = NSBox()
+        box.boxType = .custom
+        box.cornerRadius = .zero
+        box.borderWidth = Constant.boxViewBorderWidth
+        box.borderColor = Constant.boxViewBorderColor
+        box.fillColor = .windowBackgroundColor
+        box.translatesAutoresizingMaskIntoConstraints = false
+        return box
+    }()
     
-    @objc private func returnButtonAction() {
-        if returnButton.isEnabled { webView.goBack() }
-    }
-    
-    @objc private func mainPageButtonAction() {
-        if let url = baseUrl { self.webView.load(URLRequest(url: url)) }
-    }
-
-    @objc private func nextButtonAction() {
-        if nextButton.isEnabled { webView.goForward() }
-    }
-}
-
-//MARK: Setup components for MainViewController
-private extension MainVC {
-    
-    func setupButtonBack() -> NSButton {
+    private lazy var returnButton: NSButton = {
         let button = NSButton()
         button.configure(title: Localized.buttonBackTitle, action: #selector(returnButtonAction))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isEnabled = false
-        button.layer?.backgroundColor = NSColor.lightGray.cgColor
+        button.layer?.backgroundColor = Constant.returnButtonbackgroundColor
         return button
-    }
+    }()
     
-    func setupButtonHome() -> NSButton {
+    private lazy var mainPageButton: NSButton = {
         let button = NSButton()
         button.configure(title: Localized.buttonHomeTitle, action: #selector(mainPageButtonAction))
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer?.backgroundColor = NSColor.lightGray.cgColor
+        button.layer?.backgroundColor = Constant.mainPageButtonBackgroundColor
         return button
-    }
+    }()
     
-    func setupButtonForward() -> NSButton {
+    private lazy var nextButton: NSButton = {
         let button = NSButton()
         button.configure(title: Localized.buttonForwardTitle, action: #selector(nextButtonAction))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isEnabled = false
-        button.layer?.backgroundColor = NSColor.lightGray.cgColor
+        button.layer?.backgroundColor = Constant.nextButtonBackgroundColor
         return button
-    }
+    }()
     
-    func setupBoxView() -> NSBox {
-        let box = NSBox()
-        box.boxType = .custom
-        box.cornerRadius = 0
-        box.borderWidth = 1
-        box.borderColor = NSColor.secondaryLabelColor
-        box.fillColor = .windowBackgroundColor
-        box.translatesAutoresizingMaskIntoConstraints = false
-        return box
-    }
-    
-    func setupWebView() -> WKWebView {
+    private lazy var webView: WKWebView = {
         let web = WKWebView()
         web.translatesAutoresizingMaskIntoConstraints = false
         return web
+    }()
+    
+    // MARK: Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addSubviews()
+        setupLayout()
+        webView.navigationDelegate = self
+        webView.uiDelegate = self
+        DispatchQueue.main.asyncAfter(deadline: .now()) { [ weak self] in
+            if let url = AppConstant.ApiConstant.baseUrl {
+                self?.webView.load(URLRequest(url: url))
+            }
+        }
     }
     
-    func addSubviews() {
-        self.view.addSubview(boxView)
-        self.view.addSubview(webView)
-        self.boxView.addSubview(returnButton)
-        self.boxView.addSubview(mainPageButton)
-        self.boxView.addSubview(nextButton)
+    override func loadView() {
+        view = NSView(frame: NSRect(origin: CGPoint(),
+                                    size: CGSize(width: Constant.viewWidth,
+                                                 height: Constant.viewHeigh)))
+        view.layer?.backgroundColor = .white
     }
     
-    func setupLayout() {
-        boxView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-        boxView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        boxView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        
-        returnButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        returnButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        returnButton.centerYAnchor.constraint(equalTo: self.boxView.centerYAnchor).isActive = true
-        returnButton.leftAnchor.constraint(equalTo: self.boxView.leftAnchor, constant: 30).isActive = true
-        
-        mainPageButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        mainPageButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        mainPageButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        mainPageButton.centerYAnchor.constraint(equalTo: self.boxView.centerYAnchor).isActive = true
-        
-        nextButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        nextButton.centerYAnchor.constraint(equalTo: self.boxView.centerYAnchor).isActive = true
-        nextButton.rightAnchor.constraint(equalTo: self.boxView.rightAnchor, constant: -30).isActive = true
-        
-        webView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-        webView.topAnchor.constraint(equalTo: self.boxView.bottomAnchor).isActive = true
-        webView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+    // MARK: ButtonAction
+    
+    @objc private func returnButtonAction() {
+        guard !returnButton.isEnabled
+        else {
+            webView.goBack()
+            return
+        }
+    }
+    
+    @objc private func mainPageButtonAction() {
+        guard let url = AppConstant.ApiConstant.baseUrl
+        else { return }
+        webView.load(URLRequest(url: url))
+    }
+    
+    @objc private func nextButtonAction() {
+        guard !nextButton.isEnabled
+        else {
+            webView.goForward()
+            return
+        }
     }
 }
 
-//MARK: WKNavigationDelegate
+// MARK: Private methods
+private extension MainVC {
+    
+    func addSubviews() {
+        view.addSubview(boxView)
+        view.addSubview(webView)
+        boxView.addSubview(returnButton)
+        boxView.addSubview(mainPageButton)
+        boxView.addSubview(nextButton)
+    }
+    
+    func setupLayout() {
+        NSLayoutConstraint.activate(
+            [
+                boxView.widthAnchor.constraint(equalTo: view.widthAnchor),
+                boxView.heightAnchor.constraint(equalToConstant: Constant.boxViewHeigh),
+                boxView.topAnchor.constraint(equalTo: view.topAnchor),
+                
+                returnButton.widthAnchor.constraint(equalToConstant: Constant.returnButtonWidth),
+                returnButton.heightAnchor.constraint(equalToConstant: Constant.returnButtonHeigh),
+                returnButton.centerYAnchor.constraint(equalTo: boxView.centerYAnchor),
+                returnButton.leftAnchor.constraint(equalTo: boxView.leftAnchor,
+                                                   constant: Constant.returnButtonLeftConstant),
+                
+                mainPageButton.widthAnchor.constraint(equalToConstant: Constant.mainPageButtonWidth),
+                mainPageButton.heightAnchor.constraint(equalToConstant: Constant.mainPageButtonHeigh),
+                mainPageButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                mainPageButton.centerYAnchor.constraint(equalTo: boxView.centerYAnchor),
+                
+                nextButton.widthAnchor.constraint(equalToConstant: Constant.nextButtonWidth),
+                nextButton.heightAnchor.constraint(equalToConstant: Constant.nextButtonHeigh),
+                nextButton.centerYAnchor.constraint(equalTo: boxView.centerYAnchor),
+                nextButton.rightAnchor.constraint(equalTo: boxView.rightAnchor,
+                                                  constant: Constant.nextButtonRightConstant),
+                
+                webView.widthAnchor.constraint(equalTo: view.widthAnchor),
+                webView.topAnchor.constraint(equalTo: boxView.bottomAnchor),
+                webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ]
+        )
+    }
+}
+
+// MARK: WKNavigationDelegate
 extension MainVC: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         returnButton.isEnabled = webView.backForwardList.backList.isEmpty ? false : true
@@ -133,12 +166,12 @@ extension MainVC: WKNavigationDelegate {
     }
 }
 
-//MARK: WKUIDelegate
+// MARK: WKUIDelegate
 extension MainVC: WKUIDelegate {
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if navigationAction.targetFrame == nil || navigationAction.targetFrame?.isMainFrame == false {
             if let newURL = navigationAction.request.url {
-                self.webView.load(URLRequest(url: newURL))
+                webView.load(URLRequest(url: newURL))
             }
         }
         return nil

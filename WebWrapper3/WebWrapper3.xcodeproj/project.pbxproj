@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		8C1AFEC527E8B422005037D9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C1AFEC427E8B422005037D9 /* Info.plist */; };
+		8C1AFEC727EA00BF005037D9 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1AFEC627EA00BF005037D9 /* AppConstant.swift */; };
 		8C3A484E27E8ABCA00373F4F /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C3A484927E8ABCA00373F4F /* Main.xib */; };
 		8C3A484F27E8ABCA00373F4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3A484A27E8ABCA00373F4F /* AppDelegate.swift */; };
 		8C3A485027E8ABCA00373F4F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3A484B27E8ABCA00373F4F /* main.swift */; };
 		CEA49A5B27BD46F500FB1F02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA49A5A27BD46F500FB1F02 /* Assets.xcassets */; };
-		CEA49A6D27BE3AF300FB1F02 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA49A6C27BE3AF300FB1F02 /* URL.swift */; };
 		CEA49A7027BE3B2000FB1F02 /* NSButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA49A6F27BE3B2000FB1F02 /* NSButton+Extension.swift */; };
 		CEA49A7427BE3B4A00FB1F02 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA49A7327BE3B4A00FB1F02 /* String+Extension.swift */; };
 		CEA49A7727BE3B7200FB1F02 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA49A7627BE3B7200FB1F02 /* Localized.swift */; };
@@ -24,13 +24,13 @@
 
 /* Begin PBXFileReference section */
 		8C1AFEC427E8B422005037D9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C1AFEC627EA00BF005037D9 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 		8C3A484927E8ABCA00373F4F /* Main.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Main.xib; sourceTree = "<group>"; };
 		8C3A484A27E8ABCA00373F4F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C3A484B27E8ABCA00373F4F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8C3A484D27E8ABCA00373F4F /* webwrapper3.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = webwrapper3.entitlements; sourceTree = "<group>"; };
 		CEA49A5327BD46F300FB1F02 /* WebWrapper3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebWrapper3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA49A5A27BD46F500FB1F02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CEA49A6C27BE3AF300FB1F02 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		CEA49A6F27BE3B2000FB1F02 /* NSButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Extension.swift"; sourceTree = "<group>"; };
 		CEA49A7327BE3B4A00FB1F02 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		CEA49A7627BE3B7200FB1F02 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
@@ -54,6 +54,7 @@
 		8C3A13F027E899A100D96DBE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CEA49A6727BD472F00FB1F02 /* Localization */,
 				CEA49A5A27BD46F500FB1F02 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -90,6 +91,7 @@
 				8C1AFEC427E8B422005037D9 /* Info.plist */,
 				8C3A484A27E8ABCA00373F4F /* AppDelegate.swift */,
 				8C3A484B27E8ABCA00373F4F /* main.swift */,
+				8C1AFEC627EA00BF005037D9 /* AppConstant.swift */,
 			);
 			path = ApplicationLayer;
 			sourceTree = "<group>";
@@ -116,11 +118,9 @@
 				8C3A484827E8AB4600373F4F /* ApplicationLayer */,
 				8C3A13F227E89D8100D96DBE /* BusinessLayer */,
 				CEA49AA327BE6E5400FB1F02 /* InfoPlist.strings */,
-				CEA49A6727BD472F00FB1F02 /* Localization */,
 				8C3A13F127E89D1900D96DBE /* PresentationLayer */,
 				8C3A13F027E899A100D96DBE /* Resources */,
 				8C3A13F327E89EBB00D96DBE /* Supporting Files */,
-				CEA49A6C27BE3AF300FB1F02 /* URL.swift */,
 			);
 			path = WebWrapper3;
 			sourceTree = "<group>";
@@ -225,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C1AFEC727EA00BF005037D9 /* AppConstant.swift in Sources */,
 				CEA49A7427BE3B4A00FB1F02 /* String+Extension.swift in Sources */,
 				CEA49AA627BE716200FB1F02 /* Bundle+Extension.swift in Sources */,
 				8C3A484F27E8ABCA00373F4F /* AppDelegate.swift in Sources */,
@@ -232,7 +233,6 @@
 				8C3A485027E8ABCA00373F4F /* main.swift in Sources */,
 				CEA49AA227BE56C000FB1F02 /* MainVC.swift in Sources */,
 				CEA49A7727BE3B7200FB1F02 /* Localized.swift in Sources */,
-				CEA49A6D27BE3AF300FB1F02 /* URL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
