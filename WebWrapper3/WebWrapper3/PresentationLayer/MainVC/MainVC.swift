@@ -8,14 +8,14 @@ final class MainVC: NSViewController {
         static let boxViewBorderWidth: CGFloat = 1
         static let boxViewBorderColor = NSColor.secondaryLabelColor
         static let boxViewHeigh: CGFloat = 70
-        static let returnButtonbackgroundColor = NSColor.lightGray.cgColor
+        static let returnButtonbackgroundColor = NSColor.red.cgColor
         static let returnButtonWidth: CGFloat = 80
         static let returnButtonHeigh: CGFloat = 30
         static let returnButtonLeftConstant:CGFloat = 30
-        static let mainPageButtonBackgroundColor = NSColor.lightGray.cgColor
+        static let mainPageButtonBackgroundColor = NSColor.red.cgColor
         static let mainPageButtonHeigh: CGFloat = 30
         static let mainPageButtonWidth: CGFloat = 120
-        static let nextButtonBackgroundColor = NSColor.lightGray.cgColor
+        static let nextButtonBackgroundColor = NSColor.red.cgColor
         static let nextButtonWidth: CGFloat = 80
         static let nextButtonHeigh: CGFloat = 30
         static let nextButtonRightConstant: CGFloat = -30
@@ -40,7 +40,7 @@ final class MainVC: NSViewController {
     
     private lazy var returnButton: NSButton = {
         let button = NSButton()
-        button.setup(with: Localization.buttonBackTitle, action: #selector(returnButtonAction))
+        button.setup(with: Localization.returnButtonTitle, action: #selector(returnButtonAction))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isEnabled = false
         button.layer?.backgroundColor = Constant.returnButtonbackgroundColor
@@ -49,7 +49,7 @@ final class MainVC: NSViewController {
     
     private lazy var mainPageButton: NSButton = {
         let button = NSButton()
-        button.setup(with: Localization.buttonHomeTitle, action: #selector(mainPageButtonAction))
+        button.setup(with: Localization.nextButtonTitle, action: #selector(mainPageButtonAction))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer?.backgroundColor = Constant.mainPageButtonBackgroundColor
         return button
@@ -57,7 +57,7 @@ final class MainVC: NSViewController {
     
     private lazy var nextButton: NSButton = {
         let button = NSButton()
-        button.setup(with: Localization.buttonForwardTitle, action: #selector(nextButtonAction))
+        button.setup(with: Localization.mainPageButtonTitle, action: #selector(nextButtonAction))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isEnabled = false
         button.layer?.backgroundColor = Constant.nextButtonBackgroundColor
